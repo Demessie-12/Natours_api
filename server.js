@@ -12,9 +12,7 @@ process.on('uncaughtException', (err) => {
 
 const app = require('./app');
 
-// console.log(process.env);
-// const DB = process.env.DATABASE_LOCAL;
-
+// connect to local database
 mongoose
   .connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
@@ -23,6 +21,35 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('DB connection successful!'));
+/*
+//  Connect with mongodb atlas
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.DATABASE;
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db('admin').command({ ping: 1 });
+    console.log(
+      'Pinged your deployment. You successfully connected to MongoDB!'
+    );
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+*/
 
 const port = 3000 || process.env.PORT;
 const server = app.listen(port, () => {
