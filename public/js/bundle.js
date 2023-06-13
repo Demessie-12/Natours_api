@@ -12105,7 +12105,7 @@ var updatesettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === 'password' ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+          url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -12305,22 +12305,21 @@ if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/f
         case 0:
           e.preventDefault();
           document.querySelector('.btn-save-password').innerText = 'Updating...';
-          console.log('ruhf');
           passwordCurrent = document.getElementById('password-current').value;
           password = document.getElementById('password').value;
           passwordConfirm = document.getElementById('password-confirm').value;
-          _context.next = 8;
+          _context.next = 7;
           return (0, _updateSetting.updatesettings)({
             passwordCurrent: passwordCurrent,
             password: password,
             passwordConfirm: passwordConfirm
           }, 'password');
-        case 8:
+        case 7:
           document.getElementById('password-current').value = '';
           document.getElementById('password').value = '';
           document.getElementById('password-confirm').value = '';
           document.querySelector('.btn-save-password').innerText = 'Save password';
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
@@ -12355,7 +12354,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1307" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
