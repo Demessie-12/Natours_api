@@ -13,6 +13,7 @@ process.on('uncaughtException', (err) => {
 const app = require('./app');
 
 // connect to local database
+/*
 mongoose
   .connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
@@ -21,7 +22,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('DB connection successful!'));
-/*
+*/
+
 //  Connect with mongodb atlas
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.DATABASE;
@@ -49,7 +51,16 @@ async function run() {
   }
 }
 run().catch(console.dir);
-*/
+
+// const DB = process.env.DATABASE;
+// mongoose
+//   .connect(DB, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log('DB connection successful!'));
 
 const port = 3000 || process.env.PORT;
 const server = app.listen(port, () => {
